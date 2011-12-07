@@ -236,6 +236,7 @@ module Amazon
       # Creates an Image object from a +url+  
       def Image.build_from_url(url)
         u = Amazon::Hacks::Link.new(url)
+        return nil if u.asin.nil? || u.country.nil?
         i = Image.new(u.asin, u.country)        
       end
       

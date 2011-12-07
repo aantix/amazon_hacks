@@ -44,6 +44,11 @@ module TestAmazon
         i = Amazon::Hacks::Image.build_from_url("http://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672/sr=8-1/qid=1165273301/ref=pd_bbs_sr_1/002-2410048-1716806?ie=UTF8&s=books")
         assert_equal("#{URL_PREFIX}__.jpg", i.url)
       end
+      
+      def test_build_from_url_invalid
+        i = Amazon::Hacks::Image.build_from_url("http://www.yahoo.com")
+        assert_equal(i, nil)
+      end
 
       def test_add_border_bang
         @img.add_border! 12, "\#CC2244"
